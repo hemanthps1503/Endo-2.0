@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
@@ -150,6 +150,9 @@ const Desktop2 = () => {
   const [showEndRoundNotification, setShowEndRoundNotification] = useState(false);
   const [showFullscreenNotification, setShowFullscreenNotification] = useState(false);
   const [timeLeft, setTimeLeft] = useState('05:00');
+  const [questionWidth, setQuestionWidth] = useState(35); // Default to 35% width for questions
+  const [optionsWidth, setOptionsWidth] = useState(65); // Default to 65% width for options
+  const dividerRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -290,6 +293,28 @@ const Desktop2 = () => {
     });
   };
 
+  const handleMouseDown = (e) => {
+    e.preventDefault();
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+  };
+
+  const handleMouseMove = (e) => {
+    const containerRect = dividerRef.current.parentNode.getBoundingClientRect();
+    const offsetX = e.clientX - containerRect.left;
+    const newWidthPercentage = (offsetX / containerRect.width) * 100;
+
+    if (newWidthPercentage > 20 && newWidthPercentage < 80) {
+      setQuestionWidth(newWidthPercentage);
+      setOptionsWidth(100 - newWidthPercentage);
+    }
+  };
+
+  const handleMouseUp = () => {
+    document.removeEventListener('mousemove', handleMouseMove);
+    document.removeEventListener('mouseup', handleMouseUp);
+  };
+
   if (questions.length === 0) {
     return <div>Loading...</div>;
   }
@@ -344,11 +369,21 @@ const Desktop2 = () => {
           </div>
         </div>
       )}
-      <section className="flex-grow flex flex-row items-stretch justify-start gap-[20px] w-full text-left text-base text-gray-400 font-poppins">
-        <div className="flex flex-col flex-[0_0_35%] rounded-7xl bg-white overflow-hidden p-5 box-border">
+      <section className="flex-grow flex flex-row items-stretch justify-start gap-[11px] w-full text-left text-base text-gray-400 font-poppins">
+        <div className="flex flex-col rounded-7xl bg-white overflow-hidden p-5 box-border" style={{ flex: `${questionWidth} 0 0` }}>
           <Question question={currentQuestion} index={currentQuestionIndex} />
         </div>
-        <div className="flex flex-col flex-1 rounded-7xl bg-white overflow-hidden p-5 box-border">
+        <div
+          ref={dividerRef}
+          onMouseDown={handleMouseDown}
+          className="cursor-col-resize"
+          style={{
+            width: '10px',
+            background: `url('/Frame 48102891.png') center center no-repeat`,
+            backgroundSize: 'contain',
+          }}
+        />
+        <div className="flex flex-col rounded-7xl bg-white overflow-hidden p-5 box-border" style={{ flex: `${optionsWidth} 0 0` }}>
           <Options options={currentQuestion.options} questionId={currentQuestion.id} selectedAnswer={selectedAnswer} onChange={handleOptionChange} />
         </div>
       </section>
