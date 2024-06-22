@@ -1,0 +1,58 @@
+.boardsIcon,
+.chatBotIcon,
+.dashboard1Icon {
+  position: absolute;
+  margin: 0 !important;
+  object-fit: contain;
+}
+.dashboard1Icon {
+  height: 542.7px;
+  width: 712.7px;
+  top: -13px;
+  left: 411.2px;
+}
+.boardsIcon,
+.chatBotIcon {
+  z-index: 1;
+}
+.chatBotIcon {
+  height: 556.2px;
+  width: 730.3px;
+  right: 54.1px;
+  bottom: 0.3px;
+}
+.boardsIcon {
+  height: 543.2px;
+  width: 713.2px;
+  bottom: -13.3px;
+  left: 54px;
+}
+.screens1 {
+  position: absolute;
+  width: calc(100% - 27px);
+  top: 0;
+  right: 13.5px;
+  left: 13.5px;
+  height: 814.7px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.gradient {
+  position: absolute;
+  height: 55.49%;
+  width: 100%;
+  top: 44.51%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(180deg, transparent, #0e0e0e 66.15%);
+  z-index: 2;
+}
+.screens {
+  align-self: stretch;
+  height: 962px;
+  position: relative;
+}

@@ -1,0 +1,21 @@
+.desktopHeader05 {
+    width: 100%;
+    position: relative;
+    background-color: var(--dark-background);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 33px 0 0;
+    box-sizing: border-box;
+    gap: var(--gap-16xl);
+    line-height: normal;
+    letter-spacing: normal;
+  }
+  @media screen and (max-width: 450px) {
+    .desktopHeader05 {
+      gap: var(--gap-mid);
+    }
+  }
+  

@@ -6,6 +6,7 @@ import Results from "./components/Results";
 import Login from './components/Login';
 import Register from './components/Register'
 import Instructions from './components/Instructions';
+import LandingPage from "./components/Landingpage";
 // Import the Results component
 
 function App() {
@@ -32,15 +33,15 @@ function App() {
         title = "Endo Quiz";
         metaDescription = "Welcome to the homepage of My App.";
         break;
-      case "/desktop-1":
+      case "/Endo Quiz":
         title = "Endo Quiz";
         metaDescription = "This is the Desktop1 page of My App.";
         break;
-      case "/desktop-2":
+      case "/Endo Quiz":
         title = "Endo Quiz";
         metaDescription = "This is the Desktop2 page of My App.";
         break;
-      case "/results":
+      case "/Endo Quiz":
         title = "Endo Quiz";
         metaDescription = "This is the Results page of My App.";
         break;
@@ -73,7 +74,7 @@ function App() {
       <Route path="/desktop-2/:quizId" element={<Desktop2 />} />
       <Route path="/results" element={<Results  />} />
       <Route path="/instructions/:quizId" element={<Instructions />} />
-      <Route path="/" element={<Login />} />
+      <Route path="/" element={<LandingPage />} />
     </Routes>
   );
 }
