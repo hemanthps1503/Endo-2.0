@@ -153,7 +153,7 @@ const Desktop2 = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/quizzes/${quizId}/questions`)
+    axios.get(`https://endo-2-0.onrender.com/api/quizzes/${quizId}/questions`)
       .then(response => {
         console.log('Fetched questions:', response.data);
         setQuestions(response.data);

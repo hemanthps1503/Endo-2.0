@@ -88,7 +88,7 @@ const Desktop1 = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/quizzes')
+    axios.get('https://endo-2-0.onrender.com/api/quizzes')
       .then(response => setQuizzes(response.data))
       .catch(error => console.error('Error fetching quizzes:', error));
   }, []);

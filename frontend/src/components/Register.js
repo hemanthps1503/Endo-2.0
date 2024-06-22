@@ -11,7 +11,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/register', { username, password, email });
+      await axios.post('https://endo-2-0.onrender.com/api/register', { username, password, email });
       navigate('/login');
     } catch (err) {
       console.error('Error registering:', err);

@@ -10,7 +10,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/login', { username, password });
+      const res = await axios.post('https://endo-2-0.onrender.com/api/login', { username, password });
       localStorage.setItem('token', res.data.token);
       navigate('/desktop-1');
     } catch (err) {
